@@ -1,4 +1,5 @@
 ﻿using PluginInterface;
+using ScreenShoter.Assets.Core;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -95,7 +96,7 @@ namespace ScreenShoter.Assets.Temp
                                 if (RemotingServices.IsTransparentProxy(ob))
                                 {
                                     Trace.WriteLine(ob.GetName() + " loaded");
-                                    //ob.ImageSaved += ob_ImageSaved;
+                                    ob.ImageSaved += ob_ImageSaved;
                                     plugins.Add(ob);
                                 }
                             }
@@ -111,14 +112,12 @@ namespace ScreenShoter.Assets.Temp
 
         static void ob_ImageSaved(object sender, EventArgs e)
         {
-            var icon = new NotifyIcon();
-            icon.Icon = new Icon("icon.ico");
-
-            icon.Visible = true;
+            var icon = IconSingleton.Icon;
 
             icon.BalloonTipTitle = "Information";
-            icon.BalloonTipText = "Image saved!";
+            icon.BalloonTipText = "Image saverino!";
             icon.ShowBalloonTip(1000);
         }
+
     }
 }

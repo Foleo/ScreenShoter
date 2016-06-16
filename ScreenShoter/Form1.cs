@@ -42,10 +42,8 @@ namespace ScreenShoter
             this.SizeChanged += new EventHandler(Form1_SizeChanged);
             this.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
 
-            icon = new NotifyIcon();
-            icon.Icon = new Icon("icon.ico");
+            icon = IconSingleton.Icon;
             icon.MouseUp += new MouseEventHandler(Icon_Clicked);
-            icon.Visible = true;
 
             InitializeMenu();
 
@@ -117,7 +115,6 @@ namespace ScreenShoter
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             f2.Close();
-            icon.Icon = null;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
